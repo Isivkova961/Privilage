@@ -36,26 +36,27 @@
             this.dtpDateBirth = new System.Windows.Forms.DateTimePicker();
             this.cebYesPrivilage = new System.Windows.Forms.CheckBox();
             this.dgvPrivilage = new System.Windows.Forms.DataGridView();
-            this.dataDataSet = new Benefits.dataDataSet();
-            this.dataDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTableAdapter = new Benefits.dataDataSetTableAdapters.dataTableAdapter();
             this.fioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datebirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.privilageDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataDataSet = new Benefits.dataDataSet();
+            this.dataTableAdapter = new Benefits.dataDataSetTableAdapters.dataTableAdapter();
+            this.bAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrivilage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // cebFIO
             // 
             this.cebFIO.AutoSize = true;
             this.cebFIO.Location = new System.Drawing.Point(28, 16);
-            this.cebFIO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cebFIO.Margin = new System.Windows.Forms.Padding(4);
             this.cebFIO.Name = "cebFIO";
             this.cebFIO.Size = new System.Drawing.Size(82, 21);
             this.cebFIO.TabIndex = 0;
@@ -66,7 +67,7 @@
             // 
             this.cebDateBirth.AutoSize = true;
             this.cebDateBirth.Location = new System.Drawing.Point(28, 45);
-            this.cebDateBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cebDateBirth.Margin = new System.Windows.Forms.Padding(4);
             this.cebDateBirth.Name = "cebDateBirth";
             this.cebDateBirth.Size = new System.Drawing.Size(142, 21);
             this.cebDateBirth.TabIndex = 1;
@@ -77,7 +78,7 @@
             // 
             this.cebPrivilage.AutoSize = true;
             this.cebPrivilage.Location = new System.Drawing.Point(330, 45);
-            this.cebPrivilage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cebPrivilage.Margin = new System.Windows.Forms.Padding(4);
             this.cebPrivilage.Name = "cebPrivilage";
             this.cebPrivilage.Size = new System.Drawing.Size(90, 21);
             this.cebPrivilage.TabIndex = 2;
@@ -124,25 +125,6 @@
             this.dgvPrivilage.Size = new System.Drawing.Size(501, 467);
             this.dgvPrivilage.TabIndex = 6;
             // 
-            // dataDataSet
-            // 
-            this.dataDataSet.DataSetName = "dataDataSet";
-            this.dataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataDataSetBindingSource
-            // 
-            this.dataDataSetBindingSource.DataSource = this.dataDataSet;
-            this.dataDataSetBindingSource.Position = 0;
-            // 
-            // dataBindingSource
-            // 
-            this.dataBindingSource.DataMember = "data";
-            this.dataBindingSource.DataSource = this.dataDataSetBindingSource;
-            // 
-            // dataTableAdapter
-            // 
-            this.dataTableAdapter.ClearBeforeFill = true;
-            // 
             // fioDataGridViewTextBoxColumn
             // 
             this.fioDataGridViewTextBoxColumn.DataPropertyName = "fio";
@@ -173,11 +155,41 @@
             this.privilageDataGridViewCheckBoxColumn.HeaderText = "Льгота";
             this.privilageDataGridViewCheckBoxColumn.Name = "privilageDataGridViewCheckBoxColumn";
             // 
+            // dataBindingSource
+            // 
+            this.dataBindingSource.DataMember = "data";
+            this.dataBindingSource.DataSource = this.dataDataSetBindingSource;
+            // 
+            // dataDataSetBindingSource
+            // 
+            this.dataDataSetBindingSource.DataSource = this.dataDataSet;
+            this.dataDataSetBindingSource.Position = 0;
+            // 
+            // dataDataSet
+            // 
+            this.dataDataSet.DataSetName = "dataDataSet";
+            this.dataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataTableAdapter
+            // 
+            this.dataTableAdapter.ClearBeforeFill = true;
+            // 
+            // bAdd
+            // 
+            this.bAdd.Location = new System.Drawing.Point(544, 80);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(86, 32);
+            this.bAdd.TabIndex = 7;
+            this.bAdd.Text = "Добавить";
+            this.bAdd.UseVisualStyleBackColor = true;
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            // 
             // fMainBenefits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 553);
+            this.ClientSize = new System.Drawing.Size(656, 553);
+            this.Controls.Add(this.bAdd);
             this.Controls.Add(this.dgvPrivilage);
             this.Controls.Add(this.cebYesPrivilage);
             this.Controls.Add(this.dtpDateBirth);
@@ -186,14 +198,14 @@
             this.Controls.Add(this.cebDateBirth);
             this.Controls.Add(this.cebFIO);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fMainBenefits";
             this.Text = "Журнал льготников";
             this.Load += new System.EventHandler(this.fMainBenefits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrivilage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,6 +229,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn adresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn privilageDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button bAdd;
     }
 }
 
