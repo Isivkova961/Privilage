@@ -34,11 +34,11 @@
             this.lAdres = new System.Windows.Forms.Label();
             this.tbFIO = new System.Windows.Forms.TextBox();
             this.tbAdres = new System.Windows.Forms.TextBox();
-            this.dtpDateBirth = new System.Windows.Forms.DateTimePicker();
             this.cebPrivilage = new System.Windows.Forms.CheckBox();
             this.cobGender = new System.Windows.Forms.ComboBox();
             this.bSave = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
+            this.mtbDateBirth = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // lFIO
@@ -95,13 +95,6 @@
             this.tbAdres.Size = new System.Drawing.Size(440, 25);
             this.tbAdres.TabIndex = 5;
             // 
-            // dtpDateBirth
-            // 
-            this.dtpDateBirth.Location = new System.Drawing.Point(123, 40);
-            this.dtpDateBirth.Name = "dtpDateBirth";
-            this.dtpDateBirth.Size = new System.Drawing.Size(145, 25);
-            this.dtpDateBirth.TabIndex = 6;
-            // 
             // cebPrivilage
             // 
             this.cebPrivilage.AutoSize = true;
@@ -141,17 +134,27 @@
             this.bCancel.TabIndex = 10;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
+            // mtbDateBirth
+            // 
+            this.mtbDateBirth.Location = new System.Drawing.Point(123, 38);
+            this.mtbDateBirth.Mask = "00/00/0000";
+            this.mtbDateBirth.Name = "mtbDateBirth";
+            this.mtbDateBirth.Size = new System.Drawing.Size(145, 25);
+            this.mtbDateBirth.TabIndex = 11;
+            this.mtbDateBirth.ValidatingType = typeof(System.DateTime);
             // 
             // fAEPrivilage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 160);
+            this.Controls.Add(this.mtbDateBirth);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.cobGender);
             this.Controls.Add(this.cebPrivilage);
-            this.Controls.Add(this.dtpDateBirth);
             this.Controls.Add(this.tbAdres);
             this.Controls.Add(this.tbFIO);
             this.Controls.Add(this.lAdres);
@@ -159,7 +162,7 @@
             this.Controls.Add(this.lDateBirth);
             this.Controls.Add(this.lFIO);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fAEPrivilage";
             this.Text = "Добавление льготника";
             this.ResumeLayout(false);
@@ -173,12 +176,12 @@
         private System.Windows.Forms.Label lDateBirth;
         private System.Windows.Forms.Label lGender;
         private System.Windows.Forms.Label lAdres;
-        private System.Windows.Forms.TextBox tbFIO;
-        private System.Windows.Forms.TextBox tbAdres;
-        private System.Windows.Forms.DateTimePicker dtpDateBirth;
-        private System.Windows.Forms.CheckBox cebPrivilage;
-        private System.Windows.Forms.ComboBox cobGender;
+        public System.Windows.Forms.TextBox tbFIO;
+        public System.Windows.Forms.TextBox tbAdres;
+        public System.Windows.Forms.CheckBox cebPrivilage;
+        public System.Windows.Forms.ComboBox cobGender;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.Button bCancel;
+        public System.Windows.Forms.MaskedTextBox mtbDateBirth;
     }
 }

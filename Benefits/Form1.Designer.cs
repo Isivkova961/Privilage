@@ -36,16 +36,14 @@
             this.dtpDateBirth = new System.Windows.Forms.DateTimePicker();
             this.cebYesPrivilage = new System.Windows.Forms.CheckBox();
             this.dgvPrivilage = new System.Windows.Forms.DataGridView();
-            this.fioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datebirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.privilageDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataDataSet = new Benefits.dataDataSet();
             this.dataTableAdapter = new Benefits.dataDataSetTableAdapters.dataTableAdapter();
             this.bAdd = new System.Windows.Forms.Button();
+            this.bEdit = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrivilage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).BeginInit();
@@ -111,49 +109,11 @@
             // 
             // dgvPrivilage
             // 
-            this.dgvPrivilage.AutoGenerateColumns = false;
             this.dgvPrivilage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrivilage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fioDataGridViewTextBoxColumn,
-            this.datebirthDataGridViewTextBoxColumn,
-            this.adresDataGridViewTextBoxColumn,
-            this.genderDataGridViewTextBoxColumn,
-            this.privilageDataGridViewCheckBoxColumn});
-            this.dgvPrivilage.DataSource = this.dataBindingSource;
             this.dgvPrivilage.Location = new System.Drawing.Point(28, 74);
             this.dgvPrivilage.Name = "dgvPrivilage";
             this.dgvPrivilage.Size = new System.Drawing.Size(501, 467);
             this.dgvPrivilage.TabIndex = 6;
-            // 
-            // fioDataGridViewTextBoxColumn
-            // 
-            this.fioDataGridViewTextBoxColumn.DataPropertyName = "fio";
-            this.fioDataGridViewTextBoxColumn.HeaderText = "ФИО";
-            this.fioDataGridViewTextBoxColumn.Name = "fioDataGridViewTextBoxColumn";
-            // 
-            // datebirthDataGridViewTextBoxColumn
-            // 
-            this.datebirthDataGridViewTextBoxColumn.DataPropertyName = "date_birth";
-            this.datebirthDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
-            this.datebirthDataGridViewTextBoxColumn.Name = "datebirthDataGridViewTextBoxColumn";
-            // 
-            // adresDataGridViewTextBoxColumn
-            // 
-            this.adresDataGridViewTextBoxColumn.DataPropertyName = "adres";
-            this.adresDataGridViewTextBoxColumn.HeaderText = "Адрес";
-            this.adresDataGridViewTextBoxColumn.Name = "adresDataGridViewTextBoxColumn";
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            this.genderDataGridViewTextBoxColumn.DataPropertyName = "gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "Пол";
-            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            // 
-            // privilageDataGridViewCheckBoxColumn
-            // 
-            this.privilageDataGridViewCheckBoxColumn.DataPropertyName = "privilage";
-            this.privilageDataGridViewCheckBoxColumn.HeaderText = "Льгота";
-            this.privilageDataGridViewCheckBoxColumn.Name = "privilageDataGridViewCheckBoxColumn";
             // 
             // dataBindingSource
             // 
@@ -184,11 +144,44 @@
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
+            // bEdit
+            // 
+            this.bEdit.Location = new System.Drawing.Point(544, 118);
+            this.bEdit.Name = "bEdit";
+            this.bEdit.Size = new System.Drawing.Size(86, 32);
+            this.bEdit.TabIndex = 8;
+            this.bEdit.Text = "Изменить";
+            this.bEdit.UseVisualStyleBackColor = true;
+            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
+            // 
+            // bDelete
+            // 
+            this.bDelete.Location = new System.Drawing.Point(544, 156);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(86, 32);
+            this.bDelete.TabIndex = 9;
+            this.bDelete.Text = "Удалить";
+            this.bDelete.UseVisualStyleBackColor = true;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(559, 253);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 36);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // fMainBenefits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 553);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bDelete);
+            this.Controls.Add(this.bEdit);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.dgvPrivilage);
             this.Controls.Add(this.cebYesPrivilage);
@@ -219,17 +212,15 @@
         private System.Windows.Forms.TextBox tbFIO;
         private System.Windows.Forms.DateTimePicker dtpDateBirth;
         private System.Windows.Forms.CheckBox cebYesPrivilage;
-        private System.Windows.Forms.DataGridView dgvPrivilage;
+        public System.Windows.Forms.DataGridView dgvPrivilage;
         private System.Windows.Forms.BindingSource dataDataSetBindingSource;
         private dataDataSet dataDataSet;
         private System.Windows.Forms.BindingSource dataBindingSource;
         private dataDataSetTableAdapters.dataTableAdapter dataTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datebirthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adresDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn privilageDataGridViewCheckBoxColumn;
         private System.Windows.Forms.Button bAdd;
+        private System.Windows.Forms.Button bEdit;
+        private System.Windows.Forms.Button bDelete;
+        private System.Windows.Forms.Button button1;
     }
 }
 
