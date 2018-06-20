@@ -107,6 +107,7 @@
             // 
             // cobGender
             // 
+            this.cobGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cobGender.FormattingEnabled = true;
             this.cobGender.Items.AddRange(new object[] {
             "Мужской",
@@ -164,6 +165,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fAEPrivilage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление льготника";
             this.ResumeLayout(false);
             this.PerformLayout();

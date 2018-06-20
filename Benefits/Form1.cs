@@ -126,6 +126,68 @@ namespace Benefits
         {
             LoadData();
         }
+
+        private string Filters()
+        {
+            string str = "";
+
+            if (cebFIO.Checked == true)
+            {
+                if (str == "")
+                {
+                    str = "fio LIKE '*" + tbFIO.Text + "*'";
+                }
+                else
+                {
+                    str = str + " and fio LIKE '*" + tbFIO.Text + "*'";
+                }
+            }
+
+            if (cebPrivilage.Checked == true)
+            {
+                if (str == "")
+                {
+                    str = "privilage=" + Convert.ToString(cebPrivilage.Checked);
+                }
+                else
+                {
+                    str = str + " and privilage=" + Convert.ToString(cebPrivilage.Checked);
+                }
+            }
+            return str;
+        }
+
+        private void tbFIO_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFIO.Text != "")
+            {
+                cebFIO.Checked = true;
+                string str = Filters();
+
+                (dgvPrivilage.DataSource as DataTable).DefaultView.RowFilter = str;
+            }
+        }
+
+        private void cebFIO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cebFIO.Checked == false)
+            {
+                string str = Filters();
+                (dgvPrivilage.DataSource as DataTable).DefaultView.RowFilter = str;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            (dgvPrivilage.DataSource as DataTable).DefaultView.RowFilter = tbSQL.Text;
+        }
+
+        private void cebPrivilage_CheckedChanged(object sender, EventArgs e)
+        {
+            string str = Filters();
+
+            (dgvPrivilage.DataSource as DataTable).DefaultView.RowFilter = str;
+        }
     }
 
 }

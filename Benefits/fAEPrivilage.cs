@@ -29,55 +29,64 @@ namespace Benefits
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            //Создаем подключение к БД
-            OleDbConnection conn = new OleDbConnection(connstr);
-
-            //Запрос на добавление данных
-            OleDbCommand cmdAddPrivilage = new OleDbCommand();
-
-            
-            if (bNewEdit == true)
+            //Проверка введенных данных
+            if (mtbDateBirth.Text.Contains(" ") == true)
             {
-                //Добавление новых данных
-                cmdAddPrivilage.CommandText = "INSERT INTO data (fio, date_birth, gender, adres, privilage) VALUES (@fio, @date_birth, @gender, @adres, @privilage)";
-                cmdAddPrivilage.Connection = conn;
+                MessageBox.Show("Неверно введена дата рождения", "Сообщение");
+                mtbDateBirth.Focus();
             }
             else
             {
-                //Изменение данных
-                cmdAddPrivilage.CommandText = "UPDATE data SET fio = @fio, date_birth = @date_birth, gender = @gender, adres = @adres, privilage = @privilage WHERE id = @id";
-               // cmdAddPrivilage.CommandText = "UPDATE data SET fio = @fio, date_birth = @date_birth, gender = @gender, adres = @adres, privilage = @privilage WHERE id = 1";
-                cmdAddPrivilage.Connection = conn;
-                cmdAddPrivilage.Parameters.AddWithValue("@id", iId);
+
+                //Создаем подключение к БД
+                OleDbConnection conn = new OleDbConnection(connstr);
+
+                //Запрос на добавление данных
+                OleDbCommand cmdAddPrivilage = new OleDbCommand();
+
+
+                if (bNewEdit == true)
+                {
+                    //Добавление новых данных
+                    cmdAddPrivilage.CommandText = "INSERT INTO data (fio, date_birth, gender, adres, privilage) VALUES (@fio, @date_birth, @gender, @adres, @privilage)";
+                    cmdAddPrivilage.Connection = conn;
+                }
+                else
+                {
+                    //Изменение данных
+                    cmdAddPrivilage.CommandText = "UPDATE data SET fio = @fio, date_birth = @date_birth, gender = @gender, adres = @adres, privilage = @privilage WHERE id = " + Convert.ToString(iId);
+                    cmdAddPrivilage.Connection = conn;
+                }
+
+                cmdAddPrivilage.Parameters.AddWithValue("@fio", tbFIO.Text);
+                cmdAddPrivilage.Parameters.AddWithValue("@date_birth", Convert.ToDateTime(mtbDateBirth.Text));
+                cmdAddPrivilage.Parameters.AddWithValue("@gender", cobGender.Text);
+                cmdAddPrivilage.Parameters.AddWithValue("@adres", tbAdres.Text);
+                cmdAddPrivilage.Parameters.AddWithValue("@privilage", cebPrivilage.Checked);
+
+                try
+                {
+                    //Открываем подключение
+                    conn.Open();
+                    //Выполняем запрос
+                    cmdAddPrivilage.ExecuteNonQuery();
+
+                }
+                finally
+                {
+                    //Закрываем подключение
+                    conn.Close();
+                }
+
+
+
+                // f1.LoadData();
+
+
+
+
+                this.Close();
             }
-
-            cmdAddPrivilage.Parameters.AddWithValue("@fio", tbFIO.Text);
-            cmdAddPrivilage.Parameters.AddWithValue("@date_birth", Convert.ToDateTime(mtbDateBirth.Text));
-            cmdAddPrivilage.Parameters.AddWithValue("@gender", cobGender.Text);
-            cmdAddPrivilage.Parameters.AddWithValue("@adres", tbAdres.Text);
-            cmdAddPrivilage.Parameters.AddWithValue("@privilage", cebPrivilage.Checked);
-
-            try
-            {
-                //Открываем подключение
-                conn.Open();
-                //Выполняем запрос
-                cmdAddPrivilage.ExecuteNonQuery();
-
-            }
-            finally
-            {
-                //Закрываем подключение
-                conn.Close();
-            }
-
-
-           // f1.LoadData();
-
-
-
-
-            this.Close();
 
         }
 
@@ -96,7 +105,7 @@ namespace Benefits
             {
                 tbFIO.Text = "";
                 mtbDateBirth.Text = "";
-                cobGender.Text = "";
+                cobGender.TabIndex = 0;
                 tbAdres.Text = "";
                 cebPrivilage.Checked = false;
             }

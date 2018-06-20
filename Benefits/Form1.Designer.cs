@@ -44,6 +44,8 @@
             this.bEdit = new System.Windows.Forms.Button();
             this.bDelete = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.tbSQL = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrivilage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDataSetBindingSource)).BeginInit();
@@ -60,6 +62,7 @@
             this.cebFIO.TabIndex = 0;
             this.cebFIO.Text = "По ФИО";
             this.cebFIO.UseVisualStyleBackColor = true;
+            this.cebFIO.CheckedChanged += new System.EventHandler(this.cebFIO_CheckedChanged);
             // 
             // cebDateBirth
             // 
@@ -82,6 +85,7 @@
             this.cebPrivilage.TabIndex = 2;
             this.cebPrivilage.Text = "По льготе";
             this.cebPrivilage.UseVisualStyleBackColor = true;
+            this.cebPrivilage.CheckedChanged += new System.EventHandler(this.cebPrivilage_CheckedChanged);
             // 
             // tbFIO
             // 
@@ -89,6 +93,7 @@
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(412, 25);
             this.tbFIO.TabIndex = 3;
+            this.tbFIO.TextChanged += new System.EventHandler(this.tbFIO_TextChanged);
             // 
             // dtpDateBirth
             // 
@@ -112,7 +117,7 @@
             this.dgvPrivilage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrivilage.Location = new System.Drawing.Point(28, 74);
             this.dgvPrivilage.Name = "dgvPrivilage";
-            this.dgvPrivilage.Size = new System.Drawing.Size(501, 467);
+            this.dgvPrivilage.Size = new System.Drawing.Size(501, 330);
             this.dgvPrivilage.TabIndex = 6;
             // 
             // dataBindingSource
@@ -174,11 +179,30 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tbSQL
+            // 
+            this.tbSQL.Location = new System.Drawing.Point(28, 433);
+            this.tbSQL.Name = "tbSQL";
+            this.tbSQL.Size = new System.Drawing.Size(313, 25);
+            this.tbSQL.TabIndex = 11;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(381, 433);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 25);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Выполнить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // fMainBenefits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 553);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.tbSQL);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bDelete);
             this.Controls.Add(this.bEdit);
@@ -193,6 +217,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fMainBenefits";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Журнал льготников";
             this.Load += new System.EventHandler(this.fMainBenefits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrivilage)).EndInit();
@@ -221,6 +246,8 @@
         private System.Windows.Forms.Button bEdit;
         private System.Windows.Forms.Button bDelete;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbSQL;
+        private System.Windows.Forms.Button button2;
     }
 }
 
