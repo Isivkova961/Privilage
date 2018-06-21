@@ -16,34 +16,38 @@ namespace Benefits
     {
         //Присвоение стоки подключения к БД
         string connstr = Benefits.Utility.GetConnectionString();
+        //переменная для обозначения для чего открываем форму (добаление или редактирование данных)
         bool bNewEdit;
+        //переменная индетификатора строки для редактирования
         int iId;
         fMainBenefits f1 = new fMainBenefits();
 
         public fAEPrivilage()
         {
             InitializeComponent();
+            //Курсор на ФИО
+            this.ActiveControl = tbFIO;
 
 
         }
 
+        //Кнопка сохранения данных
         private void bSave_Click(object sender, EventArgs e)
         {
             //Проверка введенных данных
-            if (mtbDateBirth.Text.Contains(" ") == true)
+            if (mtbDateBirth.Text.Length < 10)
             {
                 MessageBox.Show("Неверно введена дата рождения", "Сообщение");
+                //Возвращаем курсор на дату рождения
                 mtbDateBirth.Focus();
             }
             else
             {
-
                 //Создаем подключение к БД
                 OleDbConnection conn = new OleDbConnection(connstr);
 
                 //Запрос на добавление данных
                 OleDbCommand cmdAddPrivilage = new OleDbCommand();
-
 
                 if (bNewEdit == true)
                 {
@@ -77,19 +81,11 @@ namespace Benefits
                     //Закрываем подключение
                     conn.Close();
                 }
-
-
-
-                // f1.LoadData();
-
-
-
-
-                this.Close();
+                this.Close();             
             }
-
         }
 
+        //Кнопка отмены
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -101,6 +97,7 @@ namespace Benefits
             bNewEdit = bNewEdit1;
             iId = iId1;
 
+            //Если мы открыли форму для добавления данных
             if (bNewEdit1 == true)
             {
                 tbFIO.Text = "";
@@ -108,6 +105,15 @@ namespace Benefits
                 cobGender.TabIndex = 0;
                 tbAdres.Text = "";
                 cebPrivilage.Checked = false;
+            }
+        }
+
+        //Закрытие окна по нажатию кнопки ESC
+        private void fAEPrivilage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
     }

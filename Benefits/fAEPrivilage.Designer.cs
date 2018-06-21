@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAEPrivilage));
             this.lFIO = new System.Windows.Forms.Label();
             this.lDateBirth = new System.Windows.Forms.Label();
             this.lGender = new System.Windows.Forms.Label();
@@ -86,14 +87,14 @@
             this.tbFIO.Location = new System.Drawing.Point(73, 9);
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(440, 25);
-            this.tbFIO.TabIndex = 4;
+            this.tbFIO.TabIndex = 0;
             // 
             // tbAdres
             // 
             this.tbAdres.Location = new System.Drawing.Point(73, 70);
             this.tbAdres.Name = "tbAdres";
             this.tbAdres.Size = new System.Drawing.Size(440, 25);
-            this.tbAdres.TabIndex = 5;
+            this.tbAdres.TabIndex = 7;
             // 
             // cebPrivilage
             // 
@@ -101,7 +102,7 @@
             this.cebPrivilage.Location = new System.Drawing.Point(442, 43);
             this.cebPrivilage.Name = "cebPrivilage";
             this.cebPrivilage.Size = new System.Drawing.Size(71, 21);
-            this.cebPrivilage.TabIndex = 7;
+            this.cebPrivilage.TabIndex = 6;
             this.cebPrivilage.Text = "Льгота";
             this.cebPrivilage.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +116,7 @@
             this.cobGender.Location = new System.Drawing.Point(315, 40);
             this.cobGender.Name = "cobGender";
             this.cobGender.Size = new System.Drawing.Size(121, 25);
-            this.cobGender.TabIndex = 8;
+            this.cobGender.TabIndex = 4;
             // 
             // bSave
             // 
@@ -143,7 +144,7 @@
             this.mtbDateBirth.Mask = "00/00/0000";
             this.mtbDateBirth.Name = "mtbDateBirth";
             this.mtbDateBirth.Size = new System.Drawing.Size(145, 25);
-            this.mtbDateBirth.TabIndex = 11;
+            this.mtbDateBirth.TabIndex = 2;
             this.mtbDateBirth.ValidatingType = typeof(System.DateTime);
             // 
             // fAEPrivilage
@@ -163,10 +164,14 @@
             this.Controls.Add(this.lDateBirth);
             this.Controls.Add(this.lFIO);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fAEPrivilage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление льготника";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fAEPrivilage_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
